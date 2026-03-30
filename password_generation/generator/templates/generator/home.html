@@ -1,3 +1,10 @@
-<h2>This is a home page</h2>
+<h1>Password generator</h1>
 
-{{ password }}
+<form action="{% url 'password' %}">
+    <select  name="length">
+        <option value="6">6 char long</option>
+        <option value="7">7 char long</option>
+        <option value="8">8 char long</option>
+    </select>
+    <input type="submit" value="Generate password">
+</form>
