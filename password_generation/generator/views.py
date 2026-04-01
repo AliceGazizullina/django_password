@@ -6,11 +6,20 @@ import random
 
 def home(request):
     return render(request,'generator/home.html', {'password':'Qwerty1234'})
+def author(request):
+    return render(request,'generator/author.html')
 
 def password(request):
     characters = list('abcdefghijklmnoprstquvwyxz')
 
-    length = 10
+    if request.GET.get('uppercase'):
+        characters.extend('ABCDEFGHIJKLMNPRSTQUVWYXZ')
+    if request.GET.get('special'):
+        characters.extend('!@#$%^&*()')
+    if request.GET.get('numbers'):
+        characters.extend('1234567890')
+
+    length = int(request.GET.get('length', 12))
 
     thepassword = ''
     for i in range(length):
